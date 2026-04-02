@@ -70,9 +70,9 @@ const geminiBody = body.replace(/\$ARGUMENTS/g, '{{args}}');
 write(
   '.gemini/commands/clone-website.toml',
   `# AUTO-GENERATED from .claude/skills/clone-website/SKILL.md\n` +
-    `# Run \`node scripts/sync-skills.mjs\` to regenerate.\n\n` +
-    `description = "${shortDesc}"\n\n` +
-    `[prompt]\ntext = '''\n${geminiBody}\n'''\n`
+  `# Run \`node scripts/sync-skills.mjs\` to regenerate.\n\n` +
+  `description = "${shortDesc}"\n\n` +
+  `[prompt]\ntext = '''\n${geminiBody}\n'''\n`
 );
 
 // 6. OpenCode — markdown + YAML frontmatter, $ARGUMENTS works natively
@@ -107,5 +107,15 @@ write(
     2
   ) + '\n'
 );
+
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".navbar");
+
+  if (window.scrollY > 100) {
+    header.classList.add("cc-bg");
+  } else {
+    header.classList.remove("cc-bg");
+  }
+});
 
 console.log('\nDone! 9 platform command files generated from source skill.');

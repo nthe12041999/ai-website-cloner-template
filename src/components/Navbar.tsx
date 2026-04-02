@@ -6,6 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import "../app/globals.css";
 
+
 const navLinks = [
   { label: "Our Partners", href: "/partner" },
   { label: "Blog", href: "/blog" },
@@ -38,8 +39,32 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+
+    const handleScroll = () => {
+      const header = document.querySelector(".navbar");
+
+      if (!header) return;
+
+      if (window.scrollY > 100) {
+        header.classList.add("cc-bg");
+      } else {
+        header.classList.remove("cc-bg");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // cleanup khi component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+
+  }, []);
+
   return (
-    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" className="navbar u-width-full u-spacing-inline">
+    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner"
+      className="navbar w-nav u-spacing-inline u-width-full u-position-absolute">
       <div className="container cc-1136">
         {/* Center: Nav Links (desktop only) */}
         <div className="navbar_wrapper">

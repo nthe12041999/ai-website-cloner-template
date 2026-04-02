@@ -13,8 +13,8 @@ const cards = [
 
 export function HeroSection() {
   return (
-    <header className="relative">
-      <div className="relative overflow-hidden isolate" style={{ borderRadius: "28px" }}>
+    <header className="section-home-header">
+      <div className="home-header_wrapper u-position-relative u-stacking-context u-overflow-hidden" style={{ borderRadius: "28px" }}>
         {/* Background */}
         <div className="absolute inset-0 select-none gooey-filter -z-10">
           <svg xmlns="http://www.w3.org/2000/svg"

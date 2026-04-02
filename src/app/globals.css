@@ -476,6 +476,12 @@ a {
     width: 100%;
 }
 
+@media screen and (max-width: 991px) {
+    .home-header_bg_shape, .home-header_wrapper {
+        border-radius: 0;
+    }
+}
+
 .u-spacing-inline {
     padding-left: clamp(1rem, 1.5038vw + .6476rem, 2rem);
     padding-right: clamp(1rem, 1.5038vw + .6476rem, 2rem);
@@ -497,6 +503,11 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+
+/* .navbar.cc-bg {
+    background: #180425;
+    padding-top: 1rem;
+} */
 
 .navbar_inner {
     grid-column-gap: 0px;
