@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import "../app/globals.css";
 
 const navLinks = [
   { label: "Our Partners", href: "/partner" },
@@ -38,146 +39,102 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full pt-8 pb-4 px-6"
-      style={{ zIndex: 999, backgroundColor: "transparent" }}
-    >
-      <div
-        className="mx-auto grid items-center"
-        style={{
-          gridTemplateColumns: "1fr 0.4fr 1fr",
-          maxWidth: "71rem",
-        }}
-      >
+    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" className="navbar u-width-full u-spacing-inline">
+      <div className="container cc-1136">
         {/* Center: Nav Links (desktop only) */}
-        <div className="hidden xl:flex items-center justify-center">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-2.5 py-1.5 text-xl leading-none"
-              style={{ color: "#f1f4f8" }}
-            >
-              <span
-                className="inline-block overflow-hidden"
-                style={{ paddingBottom: "3px", lineHeight: 1 }}
-              >
-                {link.label}
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Left: Logo */}
-        <div>
-          <Link href="/" className="inline-block transition-all duration-200">
-            <Image
-              src="/images/leading-cards.svg"
-              alt="Leading Cards"
-              width={180}
-              height={40}
-              className="h-auto"
-              priority
-            />
-          </Link>
-        </div>
-
-        {/* Right: Auth Buttons + Language (desktop) / Hamburger (mobile) */}
-        <div className="flex items-center justify-end gap-3">
-
-
-
-          {/* Language Dropdown */}
-          <div ref={langRef} className="relative hidden xl:block">
-            <button
-              type="button"
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm transition-colors duration-200 hover:bg-white/10 rounded-lg"
-              style={{ color: "#f1f4f8" }}
-            >
-              <span>{selectedLang.short}</span>
-              <Image
-                src="/images/arrow-down.svg"
-                alt=""
-                width={12}
-                height={12}
-                className={cn(
-                  "transition-transform duration-200",
-                  langDropdownOpen && "rotate-180"
-                )}
-              />
-            </button>
-            {langDropdownOpen && (
-              <div
-                className="absolute right-0 top-full mt-2 min-w-[160px] rounded-lg border border-white/15 bg-[#1a1a2e]/95 py-1 backdrop-blur-md"
-                style={{ zIndex: 1000 }}
-              >
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    type="button"
-                    onClick={() => {
-                      setSelectedLang(lang);
-                      setLangDropdownOpen(false);
-                    }}
-                    className={cn(
-                      "w-full px-4 py-2 text-left text-sm transition-colors duration-150 hover:bg-white/10",
-                      selectedLang.code === lang.code
-                        ? "text-white font-medium"
-                        : "text-white/70"
-                    )}
+        <div className="navbar_wrapper">
+          <div className="navbar_inner">
+            <nav role="navigation" className="navbar_nav w-nav-menu">
+              <ul className="navbar_nav_list u-list-unstyled">
+                <li>
+                  <a href="/partner" className="navbar_nav_link w-inline-block">
+                    <div className="navbar_link_text-wrap">
+                      <span className="navbar_link_text">Our Partners</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/partner" className="navbar_nav_link w-inline-block">
+                    <div className="navbar_link_text-wrap">
+                      <span className="navbar_link_text">Blog</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/partner" className="navbar_nav_link w-inline-block">
+                    <div className="navbar_link_text-wrap">
+                      <span className="navbar_link_text">Contact us</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              {/* {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-xl leading-none navbar_nav_link w-inline-block"
+                  style={{ color: "#f1f4f8" }}
+                >
+                  <span
+                    className="inline-block overflow-hidden"
+                    style={{ paddingBottom: "3px", lineHeight: 1 }}
                   >
-                    {lang.label}
-                  </button>
-                ))}
+                    {link.label}
+                  </span>
+                </Link>
+              ))} */}
+            </nav>
+
+            {/* Left: Logo */}
+            <Link href="/" className="navbar_brand w-inline-block w--current">
+              <Image
+                src="/images/leading-cards.svg"
+                alt="Leading Cards"
+                width={180}
+                height={40}
+                className="h-auto"
+                priority
+              />
+            </Link>
+
+
+            {/* Right: Auth Buttons + Language (desktop) / Hamburger (mobile) */}
+            <div className="navbar_nav_buttons cc-mobile">
+
+              {/* Auth Buttons (desktop only) */}
+              <div className="navbar_menu-icon w-nav-button">
+                <button
+                  type="button"
+                  className="button-primary cc-secondary u-hide-tablet w-inline-block">
+                  Sign in
+                </button>
+                <button
+                  type="button"
+                  className="button-primary cc-ghost u-hide-tablet w-inline-block">
+                  Sign up
+                </button>
               </div>
-            )}
-          </div>
 
-          {/* Auth Buttons (desktop only) */}
-          <div className="hidden xl:flex items-center gap-3">
-            <button
-              type="button"
-              className="rounded-lg transition-colors duration-200 hover:bg-white/10 button-primary cc-secondary"
-              style={{
-                backgroundColor: "transparent",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                color: "#f1f4f8",
-                fontSize: "clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem)",
-              }}
-            >
-              Sign in
-            </button>
-            <button
-              type="button"
-              className="rounded-lg transition-colors duration-200 hover:bg-white/20 button-primary cc-ghost"
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                color: "#f1f4f8",
-                fontSize: "clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem)",
-              }}
-            >
-              Sign up
-            </button>
-          </div>
+              {/* Mobile Hamburger Menu Button */}
+              <button
+                type="button"
+                className="xl:hidden p-2 transition-colors duration-200 hover:bg-white/10 rounded-lg"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                <Image
+                  src="/images/menu.svg"
+                  alt="Menu"
+                  width={24}
+                  height={24}
+                />
+              </button>
+            </div>
 
-          {/* Mobile Hamburger Menu Button */}
-          <button
-            type="button"
-            className="xl:hidden p-2 transition-colors duration-200 hover:bg-white/10 rounded-lg"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            <Image
-              src="/images/menu.svg"
-              alt="Menu"
-              width={24}
-              height={24}
-            />
-          </button>
+          </div>
         </div>
+
       </div>
 
       {/* Mobile Menu */}
@@ -249,6 +206,6 @@ export function Navbar() {
 
         </div>
       )}
-    </nav>
+    </div>
   );
 }
