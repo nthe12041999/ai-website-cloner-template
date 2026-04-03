@@ -1,10 +1,32 @@
 import Image from "next/image";
-import Link from "next/link";
+
+const ctaSocialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/86950206/",
+    icon: "/images/social/linkedin.webp",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/leadingcards.media/",
+    icon: "/images/social/instagram.webp",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/LeadingCards?locale=uk_UA",
+    icon: "/images/social/facebook.webp",
+  },
+  {
+    label: "Telegram",
+    href: "https://t.me/+qXQldWDNab0yNWJi",
+    icon: "/images/social/telegram.webp",
+  },
+] as const;
 
 export function ContactSection() {
   return (
     <section id="section-contact" className="px-6 py-16 md:py-24">
-      <div className="mx-auto max-w-[58.75rem]">
+      <div className="mx-auto max-w-[67.5rem]">
         {/* Still Have Questions Card */}
         <div
           className="relative overflow-hidden bg-cover bg-center"
@@ -13,88 +35,122 @@ export function ContactSection() {
             backgroundImage: "url(/images/still-have-questions-bg.avif)",
           }}
         >
-          <div className="flex flex-col items-center gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-[6.25rem] md:py-[3.25rem]">
+          <div className="flex flex-col items-center gap-6 px-6 py-10 text-center md:flex-row md:items-center md:justify-between md:px-[6.25rem] md:py-[3.25rem] md:text-left">
             <h2
-              className="text-center leading-[1.2] font-bold text-white md:text-left"
-              style={{
-                fontSize:
-                  "clamp(1.5rem, 0.8838rem + 2.6291vw, 3.25rem)",
-              }}
+              className="heading-h6 text-[#151c28]"
             >
               Still have questions?
             </h2>
 
             <div className="flex items-center gap-4">
-              <Link
-                href="#section-contact"
-                className="inline-flex h-11 items-center justify-center rounded-lg bg-black px-6 font-medium text-white transition-colors hover:bg-black/80"
-              >
-                Contact us
-              </Link>
-
               <div className="flex gap-3">
                 <a
-                  href="https://api.whatsapp.com/send/?phone=15144189871"
+                  href="https://api.whatsapp.com/send/?phone=15144189871&text&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 transition-colors hover:bg-white/30"
+                  className="flex items-center justify-center"
                   aria-label="Contact us on WhatsApp"
                 >
                   <Image
                     src="/images/whatsapp-icon.png"
                     alt="WhatsApp"
-                    width={24}
-                    height={24}
+                    width={44}
+                    height={44}
                   />
                 </a>
                 <a
-                  href="https://t.me/+qXQldWDNab0yNWJi"
+                  href="https://t.me/LeadingCards"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 transition-colors hover:bg-white/30"
+                  className="flex items-center justify-center"
                   aria-label="Contact us on Telegram"
                 >
                   <Image
                     src="/images/social/telegram.webp"
                     alt="Telegram"
-                    width={24}
-                    height={24}
+                    width={44}
+                    height={44}
                   />
                 </a>
               </div>
+
+              <a
+                href="https://t.me/m/Krq-iPe7OWVk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-primary cc-black inline-flex items-center justify-center font-medium"
+                style={{
+                  paddingTop: "0.75rem",
+                  paddingBottom: "0.75rem",
+                  paddingLeft: "1.25rem",
+                  paddingRight: "1.25rem",
+                }}
+              >
+                <span>Contact us</span>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Newsletter CTA Bar */}
+        {/* CTA Card - Social Links */}
         <div className="mt-8">
-          <a
-            href="https://form.typeform.com/to/e4ZYOiQe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-2xl bg-[#1a0a2e] px-6 py-6 md:px-10 md:py-8"
+          <div
+            className="cta-dot-pattern relative overflow-hidden rounded-2xl bg-[#1a0a2e] px-6 py-10 text-center md:px-10 md:py-12"
+            style={{
+              backgroundImage: "radial-gradient(circle, #8f65ac 1.5px, transparent 0)",
+              backgroundSize: "7.5px 7.5px",
+              backgroundPosition: "left bottom",
+            }}
           >
-            {/* Dot pattern overlay */}
+            {/* Mask overlay for radial fade from center */}
             <div
-              className="pointer-events-none absolute inset-0 opacity-10"
+              className="pointer-events-none absolute inset-0 bg-[#1a0a2e]"
               aria-hidden="true"
               style={{
-                backgroundImage:
-                  "radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)",
-                backgroundSize: "20px 20px",
+                maskImage: "radial-gradient(circle at 50% 0%, transparent 0, #000 16%)",
+                WebkitMaskImage: "radial-gradient(circle at 50% 0%, transparent 0, #000 16%)",
               }}
             />
 
-            <div className="relative z-10 flex flex-col items-center gap-4 md:flex-row md:justify-between">
-              <p className="text-center text-lg font-semibold text-white md:text-left md:text-xl">
-                Unlock exclusive perks! Subscribe &amp; Supercharge your ad
-                spend
-              </p>
-              <span className="inline-flex shrink-0 items-center justify-center rounded-lg bg-white px-6 py-3 font-medium text-[#1a0a2e] transition-colors group-hover:bg-white/90">
-                Subscribe
-              </span>
+            <div className="relative z-10 flex flex-col items-center gap-6">
+              {/* Logomark */}
+              <Image
+                src="/images/logomark.svg"
+                alt="Leading Cards"
+                width={60}
+                height={60}
+                className="aspect-square"
+              />
+
+              {/* Title */}
+              <h2 className="heading-h3 text-white">
+                Unlock exclusive perks! Subscribe &amp; Supercharge your ad spend
+              </h2>
+
+              {/* Social Icons */}
+              <ul className="flex items-center justify-center gap-4 list-none p-0 m-0">
+                {ctaSocialLinks.map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cta-card_list_link inline-block"
+                      aria-label={social.label}
+                    >
+                      <Image
+                        src={social.icon}
+                        alt={social.label}
+                        width={50}
+                        height={50}
+                        className="cta-card_list_image aspect-square transition-transform duration-300 hover:-translate-y-[10%] hover:scale-[1.2]"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>
